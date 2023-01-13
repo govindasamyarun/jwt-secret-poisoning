@@ -86,3 +86,9 @@ The exploit works during the token verification process.
  
 5. Update secret variable in the app.js to test other payloads. 
    
+## Demo
+
+https://user-images.githubusercontent.com/69586504/212298909-b3051646-17ad-4994-b47e-eb99c6c715bf.mov
+
+
+
