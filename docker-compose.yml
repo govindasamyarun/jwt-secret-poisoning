@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+
+  internal-app:
+    container_name: internal-app
+    hostname: internal-app
+    build:
+      context: ./internal-app
+      dockerfile: Dockerfile
+    ports:
+     - 8000:8000
+    networks:
+      customnetwork:
+        ipv4_address: 172.24.0.2
+
+  vulnerable-app:
+    container_name: vulnerable-app
+    hostname: vulnerable-app
+    build:
+      context: ./vulnerable-app
+      dockerfile: Dockerfile
+    ports:
+     - 8080:8080
+    networks:
+      customnetwork:
+        ipv4_address: 172.24.0.3
+
+  c2:
+    container_name: c2
+    hostname: c2
+    build:
+      context: ./c2
+      dockerfile: Dockerfile
+    ports:
+     - 4455:4455
+    networks:
+      customnetwork:
+        ipv4_address: 172.24.0.4
+
+networks:
+  customnetwork:
+    ipam:
+     config:
+       - subnet: 172.24.0.0/16
